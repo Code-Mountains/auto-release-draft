@@ -11,7 +11,7 @@ export async function run(): Promise<void> {
     const tag = event.getCreatedTag() 
 
     if (tag && version.isSemVer(tag)) {
-
+      const changelog = await git.getChangesIntroducedByTag(tag)
     }
 
     core.setOutput('release-url','https://fruitfall.thecodemountains.com')   
