@@ -1,3 +1,4 @@
+```
 npm install 
 
 npm run bundle 
@@ -86,3 +87,5 @@ Tests:       5 passed, 5 total
 Snapshots:   0 total
 Time:        9.222 s
 Ran all test suites.
+
+```
