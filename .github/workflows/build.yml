@@ -7,10 +7,11 @@ on:
 jobs: 
   build: 
     name: Build and Test 
-    runs-on: ["self-hosted","ub22"]    
-
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ "ub22", "ws16"]
     steps: 
-
       - name: Get the source
         uses: actions/checkout@v1
 
