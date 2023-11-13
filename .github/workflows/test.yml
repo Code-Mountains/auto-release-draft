@@ -7,7 +7,10 @@ on:
 jobs: 
   build: 
     name: Test 
-    runs-on: ["self-hosted","ub22"]    
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ["ub22", "ws16"]
 
     steps: 
 
