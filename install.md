@@ -88,4 +88,66 @@ Snapshots:   0 total
 Time:        9.222 s
 Ran all test suites.
 
+
+npm run bundle
+
+> auto-release-draft@0.0.0 bundle
+> npm run format:write && npm run package
+
+
+> auto-release-draft@0.0.0 format:write
+> prettier --write **/*.ts
+
+__tests__/index.test.ts 221ms
+__tests__/main.test.ts 50ms
+__tests__/wait.test.ts 18ms
+src/index.ts 3ms
+src/main.ts 20ms
+src/wait.ts 8ms
+
+> auto-release-draft@0.0.0 package
+> ncc build src/index.ts --license licenses.txt
+
+ncc: Version 0.38.1
+ncc: Compiling file index.js into CJS
+ncc: Using typescript@5.2.2 (local user-provided)
+  4kB  dist/licenses.txt
+ 97kB  dist/index.js
+101kB  [5176ms] - ncc 0.38.1
+
+
+npm run test
+
+> auto-release-draft@0.0.0 test
+> jest
+
+ PASS  __tests__/wait.test.ts
+  wait.ts
+    ✓ throws an invalid number (13 ms)
+    ✓ waits with a valid number (501 ms)
+
+ PASS  __tests__/main.test.ts
+  When running the action
+    ✓ it should set the release-url output parameter (6 ms)
+
+
+::set-output name=release-url::https://fruitfall.thecodemountains.com
+ PASS  __tests__/index.test.ts
+  index
+    ✓ calls run when imported (235 ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |   86.66 |       50 |     100 |    92.3 |                   
+ index.ts |     100 |      100 |     100 |     100 |                   
+ main.ts  |   71.42 |        0 |     100 |   83.33 | 13                
+ wait.ts  |     100 |      100 |     100 |     100 |                   
+----------|---------|----------|---------|---------|-------------------
+Test Suites: 3 passed, 3 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        5.441 s, estimated 9 s
+Ran all test suites.
+
 ```
