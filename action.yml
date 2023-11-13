@@ -1,6 +1,10 @@
 name: 'Auto Release Draft'
 description: 'Drafts a GitHub release with newest changes'
 author: 'Code Mountains IT Solutions'
+inputs:
+  repo-tken:
+    description: 'The CM_GITHUB_TOKEN used to authenticate'
+    required: true
 outputs:
   release-url:
     description: 'The URL of the GitHub release that was drafted'
