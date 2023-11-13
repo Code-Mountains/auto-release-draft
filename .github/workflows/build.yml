@@ -1,0 +1,21 @@
+name: Build 
+on: 
+  push: 
+    branches: 
+      - main 
+
+jobs: 
+  build: 
+    name: Build and Test 
+    runs-on: ["self-hosted","ub22"]    
+
+    steps: 
+
+      - name: Get the source
+        uses: actions/checkout@v1
+
+      - name: Restore the dependencies 
+        run: npm ci 
+
+      - name: Build 
+        run: npm run all    

@@ -8,12 +8,12 @@
 # what is expected from the build.
 name: Check dist/
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#   workflow_dispatch:
 
 permissions:
   contents: read
