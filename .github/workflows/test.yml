@@ -32,5 +32,11 @@ jobs:
         with: 
           repo-token: ${{ secrets.CM_GITHUB_TOKEN }}
 
-      - name: Print the URL of the release draft 
+      - name: Print the URL of the release draft (Linux)
+        if: matrix.os == "ub22"
         run: echo ${{ steps.create-release-draft.outputs.release-url }}
+
+      - name: Print the URL of the release draft (Windows) 
+        if: matrix.os == "ws16"
+        run: Write-Host "${{ steps.create-release-draft.outputs.release-url }}"
+        shell: powershell
