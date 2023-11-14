@@ -9,9 +9,9 @@ export async function createReleaseDraft(
     changeLog: string
 ): Promise<string> {
 
-    const octokit = new github.GitHub(repoToken)
+    const octokit = github.getOctokit(repoToken)
 
-    const response = await octokit.repos.createRelease({
+    const response = await octokit.rest.repos.createRelease({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo, 
         tag_name: versionTag, 
@@ -19,7 +19,7 @@ export async function createReleaseDraft(
         body: markdown.toUnorderedList(changeLog),
         prerelease: version.isPrerelease(versionTag),
         draft: true
-    })
+    });
 
     if (response.status !==200) {
         throw new Error(`Failed to create the release: ${response.status}`)
