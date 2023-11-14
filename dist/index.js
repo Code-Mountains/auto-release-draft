@@ -2793,7 +2793,7 @@ exports.wait = void 0;
  * @param milliseconds The number of milliseconds to wait.
  * @returns {Promise<string>} Resolves with 'done!' after the wait is over.
  */
-async function wait(milliseconds) {
+async function wait(milliseconds = 1000) {
     return new Promise(resolve => {
         if (isNaN(milliseconds)) {
             throw new Error('milliseconds not a number');
