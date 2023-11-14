@@ -12,7 +12,7 @@ import * as git from './git'
 export async function run(): Promise<void> {
   try {
 
-    var releaseUrl = ''
+    let releaseUrl = ''
 
     const token = core.getInput('repo-token')
 
