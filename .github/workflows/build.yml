@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ "ub22", "ws16"]
+        os: [ "ub22" ]
     steps: 
       - name: Get the source
         uses: actions/checkout@v1
@@ -22,7 +22,7 @@ jobs:
 
 
       - name: NPM Install 
-        run: npm install
+        run: npm install  
 
       - name: Build 
         run: npm run all    
