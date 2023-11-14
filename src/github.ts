@@ -22,7 +22,7 @@ export async function createReleaseDraft(
     })
 
     if (response.status != 200) {
-        throw new Error(`Failed to create the release: ${{response.status}}`)
+        throw new Error(`Failed to create the release: ${response.status}`)
     }
 
     core.info(`Created release draft ${response.data.name}`)

@@ -52,7 +52,7 @@ export async function getCommitMessagesFrom(
         'git',
         ['log',
             '--format=%s',
-            tag,
+            tag],
             options);
 
     core.debug(`The commit messages from ${tag} are:\n${commitMessages}`);
