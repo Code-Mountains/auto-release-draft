@@ -28,7 +28,7 @@ jobs:
 
       - name: Create a release draft for a version tag 
         id: create-release-draft 
-        uses: action.yml
+        uses: ./
         with: 
           repo-token: ${{ secrets.CM_GITHUB_TOKEN }}
 
