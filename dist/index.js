@@ -33001,15 +33001,21 @@ exports.getCreatedTag = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 function getCreatedTag() {
-    if (github.context.eventName !== 'create') {
-        core.info(`The event name was ${github.context.eventName}`);
+    const eventName = github.context.eventName;
+    const payload = github.context.payload;
+    if (eventName === 'create' && payload.ref_type === 'tag') {
+        // Handle 'create' event for a tag
+        return payload.ref;
+    }
+    else if (eventName === 'push' && payload.ref.startsWith('refs/tags/')) {
+        // Handle 'push' event for a tag
+        return payload.ref.split('refs/tags/')[1];
+    }
+    else {
+        // Log the event if it's not a tag 'create' or 'push' event
+        core.info(`The event name was ${eventName}, which is not handled by this action.`);
         return null;
     }
-    if (github.context.payload.ref_type !== 'tag') {
-        core.info('The created reference was a branch, not a tag');
-        return null;
-    }
-    return github.context.payload.ref;
 }
 exports.getCreatedTag = getCreatedTag;
 
