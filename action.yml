@@ -9,5 +9,5 @@ outputs:
   release-url:
     description: 'The URL of the GitHub release that was drafted'
 runs:
-  using: node16
+  using: node20
   main: dist/index.js
